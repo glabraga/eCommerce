@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/dropzone.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <nav class="site-header sticky-top py-1 bg-dark" id='navBar'></nav>
+
+  <div class="container padding-bottom-3x mb-1">
+
+
+    <!-- Shopping Cart-->
+    <div class="table-responsive shopping-cart">
+      <table class="table" id='cartFather'>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th class="text-center">Cantidad</th>
+            <th class="text-center">Costo</th>
+            <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#" id="emptyCart">Vaciar carrito</a>
+            </th>
+          </tr>
+        </thead>
+        <tbody id='cartContent'>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="shopping-cart-footer">
+      <div class="row">
+        <div class="col leftp">
+          <h5 class="mb-3">Tipo de envío</h5>
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="goldradio" name="publicationType" type="radio" class="custom-control-input shippingInput"
+                required="" value='13'>
+              <label class="custom-control-label" for="goldradio">Gold (13%)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input shippingInput"
+                required="" value='7'>
+              <label class="custom-control-label" for="premiumradio">Premium (7%)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="standardradio" name="publicationType" type="radio" class="custom-control-input shippingInput"
+                required="" value='3'>
+              <label class="custom-control-label" for="standardradio">Estándar (3%)</label>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div>
+            <div class="card">
+              <div class="card-header">
+                Método de pago
+              </div>
+              <div class="card-body">
+                <p class="card-text" id='selectedPaymentMethod'>Escoge un método de pago</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Modificar
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Elige un método de pago</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="custom-control custom-radio" id='creditCardOption'>
+                          <input id="creditCard" name="paymentMethod" type="radio"
+                            class="custom-control-input paymentInput" required="" value='card'>
+                          <label class="custom-control-label" for="creditCard" id='creditCardOption'>Tarjeta de
+                            crédito</label>
+                        </div>
+                        <form style='display:none' id='creditCardInfo' name='creditCardInfo' class='creditCardInfo'>
+                          <br>
+                          <div class="container">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="fullNameCCId">Nombre completo</label>
+                                  <input type="text" class="form-control" id="fullNameCCId" name="fullNameCC"
+                                    placeholder="Escribe tu nombre...">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="numberCCId">Número de la tarjeta</label>
+                                  <input type="text" class="form-control" id="numberCCId" name="numberCC" maxlength="16"
+                                    placeholder="Deben ser 16 dígitos">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="securityCodeCCId">Código de seguridad</label>
+                                  <input type="text" class="form-control" maxlength="3" id="securityCodeCCId"
+                                    name="securityCodeCC" placeholder="3 dígitos">
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="expirationDateCCId">Vencimiento</label>
+                                  <input type="date" class="form-control" id="expirationDateCCId"
+                                    name="expirationDateCC" placeholder="Another input">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                        <div class="custom-control custom-radio" id='bankTransferOption'>
+                          <input id="bankTransfer" name="paymentMethod" type="radio"
+                            class="custom-control-input paymentInput" required="" value='7'>
+                          <label class="custom-control-label" for="bankTransfer" id='bankTransferOption'>Transferencia
+                            bancaria</label>
+                        </div>
+                        <br>
+                        <form style='display:none' id='bankTransferInfo' name='bankTransferInfo'>
+                          <div class="container">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="bankAccountNumber">Número de cuenta</label>
+                                  <input type="text" class="form-control" id="bankAccountNumber"
+                                    name="bankAccountNumber" placeholder="Número de cuenta">
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="bankName">Banco</label>
+                                  <input type="text" class="form-control" id="bankName" name="bankName"
+                                    placeholder="Nombre del banco">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </form>
+
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="savePayment" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="column text-lg">Subtotal: <span class="text-medium" id='subTotal'>$289.68</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="shopping-cart-footer">
+      <div class="column"><a class="btn btn-outline-secondary" href="products.html">
+          <i class="icon-arrow-left"></i>&nbsp;Seguir
+          comprando</a></div>
+      <div class="column"><a class="btn btn-success" href="#" type='button' id="checkout">Checkout</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dropzone.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+
+</html>
